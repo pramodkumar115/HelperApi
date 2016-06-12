@@ -1,0 +1,90 @@
+[
+    {
+        "codeId": 1,
+        "codeType": "relationshipType",
+        "code": "IND",
+        "codeDescription": "Individual"
+    },
+    {
+        "codeId": 2,
+        "codeType": "relationshipType",
+        "code": "CORP",
+        "codeDescription": "Corporate"
+    },
+    {
+        "codeId": 3,
+        "codeType": "relationshipType",
+        "code": "DOM",
+        "codeDescription": "Domicilary Co"
+    },
+    {
+        "codeId": 4,
+        "codeType": "relationshipType",
+        "code": "LISTED",
+        "codeDescription": "Listed Co"
+    },
+    {
+        "codeId": 5,
+        "codeType": "relationshipType",
+        "code": "JOINT",
+        "codeDescription": "Joint"
+    },
+    {
+        "codeId": 6,
+        "codeType": "currency",
+        "code": "USD",
+        "codeDescription": "USD"
+    },
+    {
+        "codeId": 7,
+        "codeType": "currency",
+        "code": "SGD",
+        "codeDescription": "SGD"
+    },
+    {
+        "codeId": 8,
+        "codeType": "currency",
+        "code": "HKD",
+        "codeDescription": "HKD"
+    },
+    {
+        "codeId": 8,
+        "codeType": "requestStatus",
+        "code": "1",
+        "codeDescription": "New"
+    },
+    {
+        "codeId": 9,
+        "codeType": "requestStatus",
+        "code": "10",
+        "codeDescription": "Completed"
+    },
+    {
+        "codeId": 10,
+        "codeType": "affiliationType",
+        "code": "AH",
+        "codeDescription": "Account Holder"
+    },
+    {
+        "codeId": 11,
+        "codeType": "affiliationType",
+        "code": "JO",
+        "codeDescription": "Joint"
+    },
+    {
+        "codeId": 12,
+        "codeType": "affiliationType",
+        "code": "BENE",
+        "codeDescription": "Beneficial Owner"
+    },{
+        "codeId": 13,
+        "codeType": "affiliationType",
+        "code": "DIR",
+        "codeDescription": "Directors"
+    },{
+        "codeId": 13,
+        "codeType": "affiliationType",
+        "code": "SH",
+        "codeDescription": "Shareholders"
+    }
+]

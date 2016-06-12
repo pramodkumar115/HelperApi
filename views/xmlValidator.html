@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <div class="label">
+        Please input your xml here
+    </div>
+    <div>
+        <div class="editor" data-ui-ace="aceOptions" data-ng-model="xmlData"></div>
+    </div>
+    <div class="errorMsg" ng-show="errorMsg != ''">
+        <span>{{ errorMsg }}</span>
+    </div>
+    <div class="successMsg" ng-show="errorMsg == '' && successMsg != ''">
+        <span>{{ successMsg }}</span>
+    </div>
+    <div class="buttons">
+        <button class="clearBtn" data-ng-click="clear()">Clear</button>
+        <button class="submitBtn" data-ng-click="validateXML()">Validate</button>
+    </div>
+</html>

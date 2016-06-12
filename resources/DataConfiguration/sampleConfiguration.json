@@ -1,0 +1,126 @@
+[
+    {
+        "name": "FacilityRequest",
+        "fields": [
+            {
+                "name": "facilityRequestNumber",
+                "dataType": {
+                    "type": "String"
+                }
+            },
+            {
+                "name": "applicant",
+                "dataType": {
+                    "type": "Customer"
+                }
+            },
+            {
+                "name": "limitAmount",
+                "dataType": {
+                    "type": "Amount"
+                }
+            },
+            {
+                "name": "requestStatus",
+                "dataType": {
+                    "type": "MappedCode",
+                    "codeType": "requestStatus"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Customer",
+        "fields": [
+            {
+                "name": "cif",
+                "dataType": {
+                    "type": "String"
+                }
+            },
+            {
+                "name": "relationshipType",
+                "dataType": {
+                    "type": "MappedCode",
+                    "codeType": "relationshipType"
+                }
+            },
+            {
+                "name": "partners",
+                "dataType": {
+                    "type": "LegalEntity",
+                    "listSize": 3
+                }
+            }
+        ]
+    },
+    {
+        "name": "LegalEntity",
+        "fields": [
+            {
+                "name": "affiliationType",
+                "dataType":{
+                    "type": "MappedCode",
+                    "codeType": "affiliationType"
+                }
+            },{
+                "name": "partnerName",
+                "dataType": {
+                    "type": "String"
+                }
+            },{
+                "name": "bankableAssets",
+                "dataType":{
+                    "type": "Amount"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Amount",
+        "fields": [
+            {
+                "name": "value",
+                "dataType": {
+                    "type": "Double"
+                }
+            },
+            {
+                "name": "currency",
+                "dataType": {
+                    "type": "MappedCode",
+                    "codeType": "currency"
+                }
+            }
+        ]
+    },
+    {
+        "name": "MappedCode",
+        "fields": [
+            {
+                "name": "codeId",
+                "dataType": {
+                    "type": "Integer"
+                }
+            },
+            {
+                "name": "code",
+                "dataType": {
+                    "type": "String"
+                }
+            },
+            {
+                "name": "codeType",
+                "dataType": {
+                    "type": "String"
+                }
+            },
+            {
+                "name": "codeDescription",
+                "dataType": {
+                    "type": "String"
+                }
+            }
+        ]
+    }
+]

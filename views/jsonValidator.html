@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+		<div class="label">
+			Please input your json here
+		</div>
+		<div>
+			<!--<TEXTAREA NAME="comments" ROWS=15 data-ng-model="jsonData"></TEXTAREA>-->
+            <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonData"></div>
+		</div>
+		<div class="errorMsg" ng-show="errorMsg != ''">
+			<span>{{ errorMsg }}</span>
+		</div>
+		<div class="successMsg" ng-show="errorMsg == '' && successMsg != ''">
+			<span>{{ successMsg }}</span>
+		</div>
+		
+    <div class="buttons">
+        <button class="clearBtn" data-ng-click="clear()">Clear</button>
+        <button class="submitBtn" data-ng-click="validateJSON()">Validate</button>
+    </div>
+</body>
+</html>

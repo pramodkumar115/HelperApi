@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-ng-app="HelperApi">
+	<head>
+		<link rel="stylesheet" type="text/css" href="resources/style.css">
+	</head>
+	
+	<body data-ng-controller="HelperApiController">
+		<header>
+			<div>
+				<a class="headerText" href="/Helper/HelperApi/#/">Helper UI</a>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#xmlValidate">XML Validator</a></li>
+					<li><a href="#jsonValidate">JSON Validator</a></li>
+					<li><a href="#convert">XML-JSON Converter</a></li>
+					<li><a href="#jsonBuild">JSON Builder</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content">
+			<div data-ng-view ></div>
+		</div>
+		<footer>
+			@copyright Pramod's
+		</footer>
+	</body>
+
+    <script src="library/common/jquery-1.12.1.min.js"></script>
+    <script src="library/bower_components/angular/angular.min.js"></script>
+    <script src="library/bower_components/angular-route/angular-route.min.js"></script>
+    <!--<script src="library/bower_components/angular-mocks/angular-mocks.js"></script>-->
+    <script src="library/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="library/bower_components/angular-ui-ace/ui-ace.min.js"></script>
+    <script src="library/common/vkbeautify.0.99.00.beta.js"></script>
+    <script src="library/bower_components/angular-pretty-xml/src/angular-pretty-xml.js"></script>
+    <script src="library/common/xml2json.min.js"></script>
+    <script src="modules/helperApi.js"></script>
+    <script src="controllers/helperApiController.js"></script>
+    <script src="controllers/convertController.js"></script>
+    <script src="controllers/jsonBuilderController.js"></script>
+    <script src="controllers/jsonValidatorController.js"></script>
+    <script src="controllers/xmlValidatorController.js"></script>
+    <script>
+        jq("nav ul li a").click(function(){
+            jq("nav ul").find("li").removeClass("active");
+            jq(this).parent().addClass("active");
+        })
+    </script>
+</html>

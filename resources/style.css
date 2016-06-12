@@ -1,0 +1,192 @@
+header {
+    height: 30px;
+    /*border: 1px solid black;*/
+    background: #373a3c;
+    color: white;
+    margin: auto;
+    width: 99.8%;
+    padding: 20px 0;
+}
+input{
+    width:300px;
+}
+input[type="text"], TEXTAREA{
+    font-size: 12px;
+    font-family: inherit;
+    line-height: 25px;
+}
+TEXTAREA{
+    WIDTH:98%;
+    margin:1%;
+}
+body{
+	margin:0;
+	padding:0;
+    font-family: verdana;
+    font-size:14px;
+    /*background: #DCD8D8;*/
+}
+.homePage{
+    border: 2px solid gray;
+    height: 400px;
+    padding: 10px;
+    border-radius: 10px;
+}
+/*footer{
+	height:30px;
+    background: #373a3c;
+    float:right;
+    color:gray;
+}*/
+.headerText{
+    color:white;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin:5px;
+    text-decoration: none;
+    color: white;
+}
+header div{
+    float: left;
+    width: 25%;
+}
+header nav{
+    float: right;
+    width: 75%;
+}
+header nav ul{
+    margin:0;
+    padding:0;
+    width: 100%;  
+}
+nav ul li {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    /*text-decoration: underline;*/
+    background: dimgrey;
+    margin: 5px;
+    text-align: -webkit-center;
+    border-radius: 5px;
+    cursor:pointer;
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+nav ul li:hover, nav ul li.active{
+    color: #1A1A1B;
+    background: lightgray;
+}
+nav ul li:hover, nav ul li.active a{
+    color: #1A1A1B;
+}
+nav ul li a:hover{
+    color: blue;
+}
+.content{
+    margin:0 5%;
+    padding:0.5%;
+    min-height:550px;
+    /*border-right: 1px solid black;
+    border-left: 1px solid black;*/
+    background: white;
+    display: inline-block;
+    width: 88%;
+}
+footer{
+    border-top:1px solid lightgray;
+    height:30px;
+    margin:0.1% 5%;
+    padding:0.5%;
+    background-color: white;
+    /*color:black;*/
+    width: 88%;
+    text-align:right;
+    color:gray;
+}
+.contentHeader{
+    border:2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+.label{
+    /*float:left;*/
+    padding:1%;
+    font-weight: bold;
+    width:98%;
+}
+
+.buttons{
+    /*float:right;*/
+    padding:10px;
+    width:100%;
+}
+.buttons button{
+    float: right;
+    width: 10%;
+    background: #0c0909;
+    color: white;
+    margin: 1%;
+    padding: 1% 0;
+    border-radius: 5px;
+}
+.errorMsg,.successMsg {
+    color: black;
+    
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 95%;
+}
+.errorMsg{
+    background: #D06760;
+}
+.successMsg{
+    background: #4CAF50;
+}
+.infoTable{
+    padding:1%;
+    width:99%
+}
+.infoTable tr{
+    
+}
+.infoTable td{
+    padding: 10px;
+}
+.infoTable td:first-child, .infoTable td:nth-child(3){
+    width:12%;
+}
+.infoTable td:second-child,.infoTable td:nth-child(4){
+    width:38%;
+}
+.ace_editor{
+    height:400px;
+    width:100%;
+}
+.htmlForm{
+    /*margin: auto;*/
+    display: inline-block;
+    width: 100%;
+}
+.formDiv{
+    margin: 10px 0;
+    border: 1px solid lightgray;
+}
+.formHeader{
+    padding: 10px;
+    /*background: #ccc7c9;*/
+    background: #777575;
+    color: white;
+}
+.formData{
+    padding:10px;
+}
+.formData > span{
+    /*float: left;*/
+    padding: 10px;
+}

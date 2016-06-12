@@ -1,0 +1,15 @@
+{
+  "name": "helperapp",
+  "description": "Angular JS application for Helper",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pramodkumar115/HelperApi",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "angular-route": "1.5.x",
+    "jquery": "3.0.x",
+    "angular-ui-ace": "0.1.1"
+  }
+}
