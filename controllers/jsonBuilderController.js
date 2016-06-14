@@ -2,11 +2,24 @@ helperApiApp.controller("JSONBuilderController", function ($scope, $http) {
     $scope.errorMsg = '';
     $scope.isJsonBuilt = false;
     $scope.isHtmlFormLoaded = false;
+    $scope.files = [];
+    var reader = new FileReader();
+    reader.onload= function(){
+        console.log(this.result);
+    }
     $scope.aceOptions = {useWrapMode : true,
         //showGutter: false,
         theme:'twilight',
         mode: 'json'
     };
+    $scope.uploaded = function(){
+        console.log($scope.files);
+        for(var i in $scope.files){
+            var file = $scope.files[i];//.getNative();
+            console.log(typeof(file));
+            //reader.readAsText(file);
+        } 
+    }
     hideBtn = false;
     $http.get("resources/MappedCodeConfig/MappedCodeData.json").success(function(response){
         $scope.mappedCodeData = JSON.stringify(response);

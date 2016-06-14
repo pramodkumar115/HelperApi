@@ -1,5 +1,12 @@
 var jq = jQuery.noConflict();
-var helperApiApp = angular.module('HelperApi',['ngRoute','ui.ace']);
+var helperApiApp = angular.module('HelperApi',['ngRoute','ui.ace'/*,'plupload.directive'*/]);
+/*helperApiApp.config(['plUploadServiceProvider', function(plUploadServiceProvider) {
+
+    plUploadServiceProvider.setConfig('flashPath', 'library/bower_components/plupload-angular-directive/plupload.flash.swf');
+    plUploadServiceProvider.setConfig('silverLightPath', 'library/bower_components/plupload-angular-directive/plupload.silverlight.xap');
+    plUploadServiceProvider.setConfig('uploadPath', 'index.html');
+
+  }]);*/
 helperApiApp.config(function($routeProvider){
     $routeProvider
     .when("/", {
@@ -71,7 +78,6 @@ helperApiApp.directive('addjsonform', function($compile){
 helperApiApp.directive('getConfigMainObjects', function($compile){
     return function(scope, element, attrs){
         element.bind('click',function(){
-            console.log("Hello");
             var metadata = JSON.parse(scope.jsonMetaData);
             if(metadata!=null && metadata!=undefined){
                 var baseElement = jq("#radioOptions");
@@ -94,10 +100,14 @@ var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
     var divMain = jq("<div class='formDiv'></div>");
     var headerName = name;
     if(counter != -1){
-        headerName = name + '-'+(counter + 1);
+        headerName = name + '_'+(counter + 1);
     }
-    divMain.html("<div class='formHeader'>"+headerName+"</div>");
-    var divContent = jq("<div class='formData'> </div>");
+    var collapseModelName = "collapsed_"+headerName;
+    divMain.html("<div class='formHeader' ng-model='"+collapseModelName+"' ng-click='"+collapseModelName+"=!"+collapseModelName+"' >"+headerName+"</div>");
+    var divContent = jq("<div class='formData' ng-show='"+collapseModelName+"' > </div>");
+    if(counter == -1){
+        divContent = jq("<div class='formData' ng-show='!"+collapseModelName+"' > </div>");
+    }
     divContent.appendTo(divMain);
     if(config.fields!=undefined){
         for(var j in config.fields){
@@ -132,6 +142,8 @@ var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
                                 for(var cntr = 0; cntr < subConfig.dataType.listSize; cntr++){
                                     var dataDiv = getHtmlElements(subConfig.name, getConfig(type, metadata), metadata, mappedCodeData, cntr);
                                     dataDiv.appendTo(divContent);
+                                    var spacer = jq("<div style='height:15px'></div>");
+                                    spacer.appendTo(divContent);
                                 }
                             }else{
                                 var dataDiv = getHtmlElements(subConfig.name, getConfig(type, metadata), metadata, mappedCodeData, counter);

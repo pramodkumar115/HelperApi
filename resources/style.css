@@ -176,17 +176,37 @@ footer{
 .formDiv{
     margin: 10px 0;
     border: 1px solid lightgray;
+    border-radius: 5px;
+    padding-bottom: 10px;
 }
+
 .formHeader{
     padding: 10px;
     /*background: #ccc7c9;*/
     background: #777575;
     color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.formDiv:first-child > .formHeader{
+    background: gray;
 }
 .formData{
-    padding:10px;
+    padding: 1%;
+    display: inline-block;
+    width: 98%;
 }
 .formData > span{
-    /*float: left;*/
-    padding: 10px;
+        padding: 1%;
+        width: 20%;
+        display: inherit;
+        text-align: right;
+}
+.formData input, .formData select{
+        /*padding: 1%;*/
+        width: 20%;
+        display: inherit;
+}
+.formData select {
+    width: 20.4%
 }
