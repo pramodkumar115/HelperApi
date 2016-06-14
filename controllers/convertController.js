@@ -26,13 +26,13 @@ helperApiApp.controller("ConverterController", function($scope){
                 $scope.aceOptions.mode = $scope.typeOfData;
 				if ($scope.typeOfData == "xml"){
 					$scope.dataVal =vkbeautify.json(JSON.stringify(x2js.xml_str2json($scope.dataVal)));
-                    jq.parseXML($scope.dataVal);
+                    //jq.parseXML($scope.dataVal);
                     $scope.successMsg = 'Converted xml to json';
                     $scope.aceOptions.mode = "json";
 				}
 				else if($scope.typeOfData == "json"){
                     $scope.dataVal =vkbeautify.xml(x2js.json2xml_str(jq.parseJSON(($scope.dataVal))));
-                    jq.parseJSON($scope.dataVal);
+                    //jq.parseJSON($scope.dataVal);
                     $scope.successMsg = 'Converted json to xml';
                     $scope.aceOptions.mode = "xml";
 				}
