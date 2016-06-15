@@ -130,7 +130,7 @@ footer{
     background: #0c0909;
     color: white;
     margin: 1%;
-    padding: 1% 0;
+    padding: 10px 0;
     border-radius: 5px;
 }
 .errorMsg,.successMsg {
@@ -183,14 +183,17 @@ footer{
 .formHeader{
     padding: 10px;
     /*background: #ccc7c9;*/
-    background: #777575;
+    /*background: #777575;*/
+    background: -webkit-linear-gradient(bottom, #3d414e, #717275, #53585d);
+    background: -ms-linear-gradient(bottom, #3d414e, #717275, #53585d);
+    background: -webkit-linear-gradient(bottom, #3d414e, #717275, #53585d);
     color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.formDiv:first-child > .formHeader{
+/*.formDiv:first-child > .formHeader{
     background: gray;
-}
+}*/
 .formData{
     padding: 1%;
     display: inline-block;
@@ -209,4 +212,12 @@ footer{
 }
 .formData select {
     width: 20.4%
+}
+.formHeader img{
+    width:15px;
+    float:right;
+}
+
+.formHeader img:last-child{
+    left:10px;
 }

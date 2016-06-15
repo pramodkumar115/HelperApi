@@ -103,11 +103,11 @@ var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
         headerName = name + '_'+(counter + 1);
     }
     var collapseModelName = "collapsed_"+headerName;
-    divMain.html("<div class='formHeader' ng-model='"+collapseModelName+"' ng-click='"+collapseModelName+"=!"+collapseModelName+"' >"+headerName+"</div>");
+    divMain.html("<div class='formHeader' ng-model='"+collapseModelName+"' ng-click='"+collapseModelName+"=!"+collapseModelName+"' >"+headerName+"<img src='resources/images/tiny-arrow-top.png' ng-show='"+collapseModelName+"'/><img src='resources/images/tiny-arrow-bottom.png' ng-show='!"+collapseModelName+"'/></div>");
     var divContent = jq("<div class='formData' ng-show='"+collapseModelName+"' > </div>");
-    if(counter == -1){
+    /*if(counter == -1){
         divContent = jq("<div class='formData' ng-show='!"+collapseModelName+"' > </div>");
-    }
+    }*/
     divContent.appendTo(divMain);
     if(config.fields!=undefined){
         for(var j in config.fields){
