@@ -4,28 +4,20 @@
         "fields": [
             {
                 "name": "facilityRequestNumber",
-                "dataType": {
-                    "type": "String"
-                }
+                "dataType": "String"
             },
             {
                 "name": "applicant",
-                "dataType": {
-                    "type": "Customer"
-                }
+                "dataType": "Customer"
             },
             {
                 "name": "limitAmount",
-                "dataType": {
-                    "type": "Amount"
-                }
+                "dataType": "Amount"
             },
             {
                 "name": "requestStatus",
-                "dataType": {
-                    "type": "MappedCode",
-                    "codeType": "requestStatus"
-                }
+                "dataType": "MappedCode",
+                "codeType": "requestStatus"
             }
         ]
     },
@@ -34,23 +26,17 @@
         "fields": [
             {
                 "name": "cif",
-                "dataType": {
-                    "type": "String"
-                }
+                "dataType": "String"
             },
             {
                 "name": "relationshipType",
-                "dataType": {
-                    "type": "MappedCode",
-                    "codeType": "relationshipType"
-                }
+                "dataType": "MappedCode",
+                "codeType": "relationshipType"
             },
             {
                 "name": "partners",
-                "dataType": {
-                    "type": "LegalEntity",
-                    "listSize": 3
-                }
+                "dataType": "LegalEntity",
+                "isArray": true
             }
         ]
     },
@@ -59,20 +45,16 @@
         "fields": [
             {
                 "name": "affiliationType",
-                "dataType":{
-                    "type": "MappedCode",
-                    "codeType": "affiliationType"
-                }
-            },{
+                "dataType": "MappedCode",
+                "codeType": "affiliationType"
+            },
+            {
                 "name": "partnerName",
-                "dataType": {
-                    "type": "String"
-                }
-            },{
+                "dataType": "String"
+            },
+            {
                 "name": "bankableAssets",
-                "dataType":{
-                    "type": "Amount"
-                }
+                "dataType": "Amount"
             }
         ]
     },
@@ -81,16 +63,12 @@
         "fields": [
             {
                 "name": "value",
-                "dataType": {
-                    "type": "Double"
-                }
+                "dataType": "Double"
             },
             {
                 "name": "currency",
-                "dataType": {
-                    "type": "MappedCode",
-                    "codeType": "currency"
-                }
+                "dataType": "MappedCode",
+                "codeType": "currency"
             }
         ]
     },
@@ -99,27 +77,19 @@
         "fields": [
             {
                 "name": "codeId",
-                "dataType": {
-                    "type": "Integer"
-                }
+                "dataType": "Integer"
             },
             {
                 "name": "code",
-                "dataType": {
-                    "type": "String"
-                }
+                "dataType": "String"
             },
             {
                 "name": "codeType",
-                "dataType": {
-                    "type": "String"
-                }
+                "dataType": "String"
             },
             {
                 "name": "codeDescription",
-                "dataType": {
-                    "type": "String"
-                }
+                "dataType": "String"
             }
         ]
     }

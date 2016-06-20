@@ -1,0 +1,10 @@
+<div height = "600px" data-ng-controller="JSONBuilderController">
+    <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonMetaData"></div>
+    <div style="padding:10px">
+        <span class="label">Please input the name for the JSON Head Tag</span>
+        <input type="text" data-ng-model="baseValue"/>
+    </div>
+    <div class="buttons">
+        <button data-ng-click="closeDialog()">Save Config</button>
+    </div>
+</div>

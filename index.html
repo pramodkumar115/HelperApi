@@ -2,19 +2,20 @@
 <html data-ng-app="HelperApi">
 	<head>
 		<link rel="stylesheet" type="text/css" href="resources/style.css">
+        <link rel="stylesheet" type="text/css" href="library/bower_components/ng-dialog/css/ngDialog.min.css">
 	</head>
 	
 	<body data-ng-controller="HelperApiController">
 		<header>
 			<div>
-				<a class="headerText" href="/Helper/HelperApi/#/">Helper UI</a>
+				<a class="headerText" data-ng-click="home()">Helper UI</a>
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#xmlValidate">XML Validator</a></li>
-					<li><a href="#jsonValidate">JSON Validator</a></li>
-					<li><a href="#convert">XML-JSON Converter</a></li>
-					<li><a href="#jsonBuild">JSON Builder</a></li>
+					<li data-ng-class="{active: selectedItem === 'xml'}"><a href="#xmlValidate" data-ng-click="selectedItem='xml'">XML Validator</a></li>
+					<li data-ng-class="{active: selectedItem === 'json'}"><a href="#jsonValidate" data-ng-click="selectedItem='json'">JSON Validator</a></li>
+					<li data-ng-class="{active: selectedItem === 'convert'}"><a href="#convert" data-ng-click="selectedItem='convert'">XML-JSON Converter</a></li>
+					<li data-ng-class="{active: selectedItem === 'builder'}"><a href="#jsonBuild" data-ng-click="selectedItem='builder'">JSON Builder</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -29,22 +30,44 @@
     <script src="library/common/jquery-1.12.1.min.js"></script>
     <script src="library/bower_components/angular/angular.min.js"></script>
     <script src="library/bower_components/angular-route/angular-route.min.js"></script>
-    <!--<script src="library/bower_components/angular-mocks/angular-mocks.js"></script>-->
+    <script src="library/bower_components/angular-ui-ace/ui-ace.min.js"></script>
+    <script src="library/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="library/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script src="library/bower_components/angular-ui-ace/ui-ace.min.js"></script>
+    <script src="library/bower_components/ng-dialog/js/ngDialog.min.js"></script>
     <script src="library/common/vkbeautify.0.99.00.beta.js"></script>
     <script src="library/common/xml2json.min.js"></script>
     <script src="modules/helperApi.js"></script>
+    <script src="directives/helperDirectives.js"></script>
     <script src="controllers/helperApiController.js"></script>
     <script src="controllers/convertController.js"></script>
     <script src="controllers/jsonBuilderController.js"></script>
     <script src="controllers/jsonValidatorController.js"></script>
     <script src="controllers/xmlValidatorController.js"></script>
-    <!--<script src="library/bower_components/plupload-angular-directive/dist/plupload-angular-directive.min.js"></script>-->
     <script>
-        jq("nav ul li a").click(function(){
-            jq("nav ul").find("li").removeClass("active");
-            jq(this).parent().addClass("active");
-        })
+        
+        var showmodal = function(configId){
+            // Get the modal
+            var modal = document.getElementById(configId);
+            modal.style.display = "block";
+        }
+        var closemodal = function(configId){
+            var modal =document.getElementById(configId);
+            console.log(modal);
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            var modalList=jq('.modalDialog');
+            if(modalList != undefined){
+                for (var i in modalList){
+                    var modal = modalList[i];
+                    if (modal!=undefined && modal.style!=undefined && event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            }
+            
+        }
     </script>
 </html>

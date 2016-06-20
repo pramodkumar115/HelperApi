@@ -1,11 +1,9 @@
 var jq = jQuery.noConflict();
-var helperApiApp = angular.module('HelperApi',['ngRoute','ui.ace'/*,'plupload.directive'*/]);
+var helperApiApp = angular.module('HelperApi',['ngRoute','ui.ace','ngAnimate', 'ngDialog'/*,'plupload.directive'*/]);
 /*helperApiApp.config(['plUploadServiceProvider', function(plUploadServiceProvider) {
-
     plUploadServiceProvider.setConfig('flashPath', 'library/bower_components/plupload-angular-directive/plupload.flash.swf');
     plUploadServiceProvider.setConfig('silverLightPath', 'library/bower_components/plupload-angular-directive/plupload.silverlight.xap');
     plUploadServiceProvider.setConfig('uploadPath', 'index.html');
-
   }]);*/
 helperApiApp.config(function($routeProvider){
     $routeProvider
@@ -30,81 +28,17 @@ helperApiApp.config(function($routeProvider){
         controller: "JSONBuilderController"
     })    
 });
-helperApiApp.directive('fileModel', ['$parse', function ($parse) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
-
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                });
-            });
-        }
-    };
-}]);
-helperApiApp.directive('addjsonbutton', function(){
-    return {
-        restrict: 'E',
-        template: '<button addjsonform>Build HTML Form</button>'
-    }
-});
-helperApiApp.directive('addjsonform', function($compile){
-    return function(scope, element, attrs){
-        element.bind('click',function(){
-            if(scope.jsonMetaData == null || scope.jsonMetaData == undefined ||scope.jsonMetaData == {}){
-                scope.errorMsg = "No Metadata present. Please load the metadata and try";
-            }else{
-                console.log(scope.baseValue);
-                if(scope.baseValue == undefined){
-                    scope.errorMsg = "Please input base option name";
-                }else{
-                    scope.errorMsg = '';
-                    jq('#htmlForm').empty();
-                    var metadata = JSON.parse(scope.jsonMetaData);
-                    var mainConfig = getConfig(scope.baseValue, metadata);
-                    var dom = getHtmlElements(scope.baseValue, mainConfig, metadata, scope.mappedCodeData, -1);
-                    scope.isHtmlFormLoaded = true;
-                    angular.element(jq('#htmlForm')).append($compile(dom)(scope));
-                }
-            }
-            
-        })
-    }
-});
-
-helperApiApp.directive('getConfigMainObjects', function($compile){
-    return function(scope, element, attrs){
-        element.bind('click',function(){
-            var metadata = JSON.parse(scope.jsonMetaData);
-            if(metadata!=null && metadata!=undefined){
-                var baseElement = jq("#radioOptions");
-                var dom = ('<select data-ng-model="baseValue"></select>');
-                for(var i in metadata){
-                    var opt = metadata[i];
-                    dom.append('<option>'+opt.name+'</option>');
-                }
-                angular.element(baseElement).append($compile(dom)(scope));
-            }
-        })
-    }
-});
 
 
-
-
-
-var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
+var getHtmlElements = function(name, config, metadata, mappedCodeData, counter, scope){
     var divMain = jq("<div class='formDiv'></div>");
     var headerName = name;
     if(counter != -1){
         headerName = name + '_'+(counter + 1);
     }
     var collapseModelName = "collapsed_"+headerName;
-    divMain.html("<div class='formHeader' ng-model='"+collapseModelName+"' ng-click='"+collapseModelName+"=!"+collapseModelName+"' >"+headerName+"<img src='resources/images/tiny-arrow-top.png' ng-show='"+collapseModelName+"'/><img src='resources/images/tiny-arrow-bottom.png' ng-show='!"+collapseModelName+"'/></div>");
-    var divContent = jq("<div class='formData' ng-show='"+collapseModelName+"' > </div>");
+    divMain.html("<div class='formHeader' ng-model='"+collapseModelName+"' ng-click='"+collapseModelName+"=!"+collapseModelName+"' >"+headerName+"<img src='resources/images/tiny-arrow-top.png' ng-hide='"+collapseModelName+"'/><img src='resources/images/tiny-arrow-bottom.png' ng-hide='!"+collapseModelName+"'/></div>");
+    var divContent = jq("<div class='formData animate-hide' ng-hide='"+collapseModelName+"'> </div>");
     /*if(counter == -1){
         divContent = jq("<div class='formData' ng-show='!"+collapseModelName+"' > </div>");
     }*/
@@ -118,7 +52,7 @@ var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
             }
             if(subConfig.name!=config.name){
                 if(subConfig.dataType != undefined){
-                    var type = subConfig.dataType.type;
+                    var type = subConfig.dataType;
                     if(type != undefined){
                         if(isBasicDataType(type)){
                             var basicElementLabel = jq("<span>"+subConfig.name+"</span>");
@@ -126,27 +60,27 @@ var getHtmlElements = function(name, config, metadata, mappedCodeData, counter){
                             divContent.append(basicElementLabel);
                             divContent.append(basicElement);
                         }else if(type == "MappedCode"){
-                            var mappedCodes = getMappedCodeOfType(mappedCodeData, subConfig.dataType.codeType);
+                            var mappedCodes = getMappedCodeOfType(mappedCodeData, subConfig.codeType);
                             var basicElementLabel = jq("<span>"+subConfig.name+"</span>");
                             var basicElement = jq("<select data-ng-model='"+modelName+"'></select>");
                             for(var key in mappedCodes){
                                 var opt = mappedCodes[key];
-                                basicElement.append('<option>'+opt.code+'</option>');
+                                basicElement.append('<option value="'+opt.code+'">'+opt.codeDescription+'</option>');
                             }
                             
                             divContent.append(basicElementLabel);
                             divContent.append(basicElement);
                         }
                         else{
-                            if(subConfig.dataType.listSize != undefined && subConfig.dataType.listSize > 0){
-                                for(var cntr = 0; cntr < subConfig.dataType.listSize; cntr++){
-                                    var dataDiv = getHtmlElements(subConfig.name, getConfig(type, metadata), metadata, mappedCodeData, cntr);
-                                    dataDiv.appendTo(divContent);
-                                    var spacer = jq("<div style='height:15px'></div>");
-                                    spacer.appendTo(divContent);
-                                }
+                            if(subConfig.isArray != undefined && subConfig.isArray){
+                                var listDiv = jq("<div></div>");
+                                var addButton = jq("<button class='arrayListBtn' addarrayelements arrayitem='"+subConfig.dataType+"'>Add "+subConfig.name+"</button>");
+                                addButton.appendTo(listDiv);
+                                listDiv.appendTo(divContent);
+                                var spacer = jq("<div style='height:15px'></div>");
+                                spacer.appendTo(divContent);
                             }else{
-                                var dataDiv = getHtmlElements(subConfig.name, getConfig(type, metadata), metadata, mappedCodeData, counter);
+                                var dataDiv = getHtmlElements(subConfig.name, getConfig(type, metadata), metadata, mappedCodeData, counter, scope);
                                 dataDiv.appendTo(divContent);
                             }
                             

@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<script>
-function checkuploadFileName(){
-    console.log(jq("#uploadFileName"));
-    jQuery.get('file.txt', function(data) {
-       alert(data);
-       //process text file line by line
-       $('#div').html(data.replace('n',''));
-    });
-}
-</script>
 <html>
 	<body>
-        <div class="label">
-			JSON Metadata description should be entered below.<br><br>
-            Please note, currently a sample JSON is created and saved in the below container. You can override in the below area.
-		</div>
-        <!--<button pl-upload="" pl-progress-model="percent" pl-auto-upload="true" pl-files-model="files" on-file-uploaded="uploaded()" pl-filters-model='{title : "Text files", extensions : "txt"}'>Upload Files</button>
-        {{ files }}-->
         <div class="errorMsg" data-ng-show="errorMsg != ''">
 			<span>{{ errorMsg }}</span>
 		</div>
         <!--<button data-ng-click="loadConfigDataFromSample()">Load from Sample Configuration</button>-->
-        <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonMetaData"></div>
-        <div style="padding:10px">
-            <span class="label">Please input the name for the JSON Head Tag</span>
-            <input type="text" data-ng-model="baseValue"/>
-        </div>
+        <!--<div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonMetaData"></div>-->
         
         <div class="buttons">
+            <button data-ng-click="loadSavedData()">Load Saved Data</button>
             <addjsonbutton></addjsonbutton>
+            <button onclick="showmodal('config')">Configuration</button>
+        </div>
+        <div class="modalDialog" id="config">
+            <div class="modalContent">
+                <span onclick="closemodal('config')" class="close">X</span>
+                <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonMetaData"></div>
+                <div style="padding:10px">
+                    <span class="label">Please input the name for the JSON Head Tag</span>
+                    <input type="text" data-ng-model="baseValue"/>
+                    <button onclick="closemodal('config')">OK</button>
+                    <!--<button addjsonform onclick="closemodal('config')">Reload Form</button>-->
+                </div>
+                    
+            </div>
         </div>
         <div id="htmlForm" class="htmlForm">
             
         </div>
         <div class="buttons" data-ng-show="isHtmlFormLoaded">
-            <button data-ng-click='getBuiltJSON()'>Get JSON</button>
+            <button data-ng-click='getBuiltJSON()' onclick="showmodal('jsonpopup')">Get JSON</button>
         </div>
-        <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonData" data-ng-show="isJsonBuilt"></div>
+        <div class="modalDialog" id="jsonpopup">
+            <div class="modalContent">
+                <span onclick="closemodal('jsonpopup')" class="close">X</span>
+                <div class="editor" data-ui-ace="aceOptions" data-ng-model="jsonData" data-ng-show="isJsonBuilt"></div>
+            </div>
+        </div>
     </body>
 
 </html>

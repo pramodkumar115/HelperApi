@@ -1,0 +1,67 @@
+{
+    "FacilityRequest": {
+        "facilityRequestNumber": "wr4grsf",
+        "applicant": {
+            "cif": "edfwe",
+            "relationshipType": {
+                "codeId": 2,
+                "codeType": "relationshipType",
+                "code": "CORP",
+                "codeDescription": "Corporate"
+            },
+            "partners": [
+                {
+                    "affiliationType": {
+                        "codeId": 10,
+                        "codeType": "affiliationType",
+                        "code": "AH",
+                        "codeDescription": "Account Holder"
+                    },
+                    "partnerName": "ewfwef",
+                    "bankableAssets": {
+                        "value": "ewewwe",
+                        "currency": {
+                            "codeId": 7,
+                            "codeType": "currency",
+                            "code": "SGD",
+                            "codeDescription": "SGD"
+                        }
+                    }
+                },
+                {
+                    "affiliationType": {
+                        "codeId": 11,
+                        "codeType": "affiliationType",
+                        "code": "JO",
+                        "codeDescription": "Joint"
+                    },
+                    "partnerName": "edfwef",
+                    "bankableAssets": {
+                        "value": "42323",
+                        "currency": {
+                            "codeId": 7,
+                            "codeType": "currency",
+                            "code": "SGD",
+                            "codeDescription": "SGD"
+                        }
+                    }
+                }
+            ]
+        },
+        "limitAmount": {
+            "value": "ewwerwer",
+            "currency": {
+                "codeId": 7,
+                "codeType": "currency",
+                "code": "SGD",
+                "codeDescription": "SGD"
+            }
+        },
+        "requestStatus": {
+            "codeId": 8,
+            "codeType": "requestStatus",
+            "code": "1",
+            "codeDescription": "New"
+        }
+    }
+}
